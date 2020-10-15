@@ -1,0 +1,118 @@
+<div>
+  <nz-page-header nzBackIcon [nzGhost]="false">
+    <nz-page-header-title>Busca de Livros</nz-page-header-title>
+
+    <nz-page-header-extra>
+      <button nz-button nzType="primary" routerLink="/book/cadastrar">Novo</button>
+    </nz-page-header-extra>
+    <nz-page-header-content> </nz-page-header-content>
+  </nz-page-header>
+  <form nz-form [formGroup]="formBook" nzLayout="vertical" class="ant-advanced-search-form">
+    <div nz-row [nzGutter]="24">
+      <div nz-col [nzSpan]="8">
+        <nz-form-item>
+          <nz-form-label> Busca </nz-form-label>
+          <nz-form-control>
+            <input nz-input placeholder="Busca livros pelo título, autor ou ISBN" formControlName="search" />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="8">
+        <nz-form-item>
+          <nz-form-label>Ano de Publicação</nz-form-label>
+          <nz-form-control>
+            <nz-date-picker nzPlaceHolder="Ano Inicio" nzMode="year" nzFormat="yyyy" formControlName="anoInicio">
+            </nz-date-picker>
+            <nz-divider nzType="vertical"></nz-divider>
+            <nz-form-label> Até </nz-form-label>
+            <nz-divider nzType="vertical"></nz-divider>
+            <nz-date-picker nzPlaceHolder="Ano Fim" nzMode="year" nzFormat="yyyy" formControlName="anoFim">
+            </nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col [nzSpan]="24" class="search-area">
+        <button nz-button [nzType]="'primary'" (click)="search()">Pesquisar</button>
+        <button nz-button (click)="resetForm()">Limpar</button>
+      </div>
+    </div>
+  </form>
+  <div style="height: 30px"></div>
+  <div>
+    <div class="send-request" *ngIf="resultBook?.totalCount > 0">
+      <span>{{ resultBook?.totalCount }} resultados encontrados</span>
+    </div>
+    <nz-table nzShowSizeChanger [nzFrontPagination]="false" [nzTotal]="resultBook?.totalCount" [nzPageSize]="pageSize"
+      [nzPageIndex]="pageIndex" [nzData]="resultBook?.items" [nzLoading]="loading"
+      (nzQueryParams)="onQueryParamsChange($event)">
+      <thead>
+        <tr>
+          <th>Livro</th>
+          <th>Autor</th>
+          <th>Editora</th>
+          <th>Ano</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of resultBook?.items">
+          <td>{{ book?.titulo }}</td>
+          <td>{{ book?.autor }}</td>
+          <td>{{ book?.editora }}</td>
+          <td>{{ book?.ano }}</td>
+          <td>
+            <a (click)="detail(book?.id)">Detalhar</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm nzPopconfirmTitle="Deseja realmente excluir?"
+              (nzOnConfirm)="deleteRow(book)">Deletar</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-popconfirm (click)="edit(book?.id)">Editar</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+
+<nz-modal [(nzVisible)]="onDetail" nzTitle="Detalhes" (nzOnCancel)="handleOk()" (nzOnOk)="handleOk()">
+  <label class="titulo">TITULO</label>
+  <label> {{ bookDetail?.titulo  }} </label>
+  <br /> <br />
+
+  <label class="titulo">ISBN</label>
+  <label> {{ bookDetail?.isbn  }} </label>
+  <br /> <br />
+
+  <label class="titulo"> AUTOR</label>
+  <label> {{ bookDetail?.autor  }} </label>
+  <br /> <br />
+
+  <label class="titulo">EDITORA</label>
+  <label> {{ bookDetail?.editora  }} </label>
+  <br /> <br />
+
+  <label class="titulo">ANO</label>
+  <label> {{ bookDetail?.ano  }} </label>
+  <br /> <br />
+
+  <label class="titulo">IDIOMA</label>
+  <label> {{ bookDetail?.idioma  }} </label>
+  <br /> <br />
+
+  <label class="titulo">PESO</label>
+  <label> {{ bookDetail?.peso  }} </label>
+  <br /> <br />
+
+  <label class="titulo">COMPRIMENTO</label>
+  <label> {{ bookDetail?.comprimento  }} </label>
+  <br /> <br />
+
+  <label class="titulo">LARGURA</label>
+  <label> {{ bookDetail?.largura  }} </label>
+  <br /> <br />
+
+  <label class="titulo">ALTURA</label>
+  <label> {{ bookDetail?.altura  }} </label>
+</nz-modal>

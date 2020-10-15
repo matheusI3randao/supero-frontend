@@ -1,0 +1,123 @@
+<nz-card nzTitle="Cadastrar Livro">
+  <form [formGroup]="formBook">
+
+    <nz-form-item [nzGutter]="10">
+      <nz-form-control [nzSpan]="6" [nzXs]="15" [nzMd]="15" [nzXl]="6" [nzErrorTip]="errorTpl">
+        <nz-form-label nzRequired>Titulo</nz-form-label>
+        <input type="text" nz-input formControlName="titulo" maxlength="40" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Este campo é obrigatório!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+
+      <nz-form-control [nzSpan]="6" [nzXs]="15" [nzMd]="15" [nzXl]="6" [nzErrorTip]="errorTpl">
+        <nz-form-label nzRequired>ISBN</nz-form-label>
+        <input type="text" nz-input formControlName="isbn" maxlength="14" mask="0*" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Este campo é obrigatório!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item [nzGutter]="10">
+      <nz-form-control [nzSpan]="6" [nzXs]="15" [nzMd]="15" [nzXl]="6" [nzErrorTip]="errorTpl">
+        <nz-form-label nzRequired>Autor</nz-form-label>
+        <input type="text" nz-input formControlName="autor" maxlength="50" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Este campo é obrigatório!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+
+      <nz-form-control [nzSpan]="6" [nzXs]="15" [nzMd]="15" [nzXl]="6" [nzErrorTip]="errorTpl">
+        <nz-form-label nzRequired>Editora</nz-form-label>
+        <input type="text" nz-input formControlName="editora" maxlength="40" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Este campo é obrigatório!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item [nzGutter]="10">
+      <nz-form-control [nzSpan]="6" [nzXs]="15" [nzMd]="15" [nzXl]="6" [nzErrorTip]="errorTpl">
+        <nz-form-label nzRequired>Ano</nz-form-label>
+        <input type="number" nz-input formControlName="ano" maxlength="4" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Este campo é obrigatório!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+
+      <nz-form-control [nzSpan]="6" [nzXs]="15" [nzMd]="15" [nzXl]="6" [nzErrorTip]="errorTpl">
+        <nz-form-label nzRequired>Idioma</nz-form-label>
+        <input type="text" nz-input formControlName="idioma" maxlength="15" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Este campo é obrigatório!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item [nzGutter]="10">
+      <nz-form-control [nzSpan]="6" [nzXs]="15" [nzMd]="15" [nzXl]="6" [nzErrorTip]="errorTpl">
+        <nz-form-label nzRequired>Peso</nz-form-label>
+        <input type="number" nz-input formControlName="peso" maxlength="3" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Este campo é obrigatório!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+
+      <nz-form-control [nzSpan]="6" [nzXs]="15" [nzMd]="15" [nzXl]="6" [nzErrorTip]="errorTpl">
+        <nz-form-label nzRequired>Comprimento</nz-form-label>
+        <input type="number" nz-input formControlName="comprimento" maxlength="3" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Este campo é obrigatório!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item [nzGutter]="10">
+      <nz-form-control [nzSpan]="6" [nzXs]="15" [nzMd]="15" [nzXl]="6" [nzErrorTip]="errorTpl">
+        <nz-form-label nzRequired>Largura</nz-form-label>
+        <input type="number" nz-input formControlName="largura" maxlength="3" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Este campo é obrigatório!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+
+      <nz-form-control [nzSpan]="6" [nzXs]="15" [nzMd]="15" [nzXl]="6" [nzErrorTip]="errorTpl">
+        <nz-form-label nzRequired>Altura</nz-form-label>
+        <input type="number" nz-input formControlName="altura" maxlength="3" />
+        <ng-template #errorTpl let-control>
+          <ng-container *ngIf="control.hasError('required')">
+            Este campo é obrigatório!
+          </ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item [nzGutter]="10">
+      <nz-form-control id="botoes" [nzSpan]="12">
+        <button nz-button class="login-form-button" [nzType]="'primary'" (click)="addBook()">
+          {{ new ? 'Cadastrar' : 'Editar' }}</button>
+        <button nz-button class="login-form-button margin-left-5" [nzType]="'secondary'"
+          routerLink="/book">Cancelar</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</nz-card>
