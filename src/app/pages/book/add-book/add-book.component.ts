@@ -81,16 +81,16 @@ export class AddBookComponent implements OnInit {
 
 
     this.formBook = this.fb.group({
-      titulo: ['LIVRO DE TESTE', Validators.required],
-      isbn: ['123456789', Validators.required],
-      autor: ['MATHEUS BRANDÃO', Validators.required],
-      editora: ['EDITORA SUPERO', Validators.required],
-      ano: ['2020', Validators.required],
-      idioma: ['PORTUGUÊS', Validators.required],
-      peso: ['100', Validators.required],
-      comprimento: ['22', Validators.required],
-      largura: ['10', Validators.required],
-      altura: ['25', Validators.required]
+      titulo: ['', Validators.required],
+      isbn: ['', Validators.required],
+      autor: ['', Validators.required],
+      editora: ['', Validators.required],
+      ano: ['', Validators.required],
+      idioma: ['', Validators.required],
+      peso: ['', Validators.required],
+      comprimento: ['', Validators.required],
+      largura: ['', Validators.required],
+      altura: ['', Validators.required]
     });
   }
 }
